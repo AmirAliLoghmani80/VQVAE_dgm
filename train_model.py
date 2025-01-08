@@ -30,9 +30,9 @@ from model import VQVAE
 #     return model
 
 # Train model.
-def train_model_vqvae(dataloader, epochs=10, lr=0.001):
+def train_model_vqvae(train_loader, train_data_variance, epochs=10, lr=0.001):
 
-    device = torch.device("cuda:0")
+    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     use_ema = True
     model_args = {
         "in_channels": 3,
