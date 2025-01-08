@@ -15,7 +15,7 @@ def parse_arguments():
     parser.add_argument(
         "--config", 
         type=str, 
-        required=True, 
+        required=False, 
         help="Path to the configuration file (YAML format)."
     )
     return parser.parse_args()
@@ -36,12 +36,12 @@ def main():
 
     # Step 1: Load data
 #     batch_size = config.get("batch_size", 32)
-    dataloader_train, dataloader_val = get_dataloader(batch_size)
+    dataloader_train, train_var, dataloader_val = get_dataloader(32)
 
     # Step 2: Train model
 #     epochs = config.get("epochs", 10)
 #     lr = config.get("learning_rate", 0.001)
-    model = train_model_vqvae(dataloader_train, 32, 0.001)
+    model = train_model_vqvae(dataloader_train, train_var, 32, 0.001)
 
     # Save the trained model
 #     model_save_path = config.get("model_save_path", "trained_model.pth")
