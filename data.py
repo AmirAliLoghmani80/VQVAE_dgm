@@ -66,5 +66,5 @@ def get_dataloader(batch_size=32):
         num_workers=workers,
     )
     
-    return train_loader, valid_loader
+    return train_loader, train_data_variance, valid_loader
 
